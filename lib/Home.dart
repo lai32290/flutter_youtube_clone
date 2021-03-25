@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Initial.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -8,7 +9,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   List<Widget> _pages = [
-    Text('Home'),
+    Initial(),
     Text('Em Alta'),
     Text('Inscritos'),
     Text('Biblioteca'),
