@@ -44,7 +44,8 @@ class _HomeState extends State<Home> {
           )
         ]
       ),
-      body: Center(
+      body: Container(
+        padding: EdgeInsets.all(16),
         child: _pages[_currentIndex]
       ),
       bottomNavigationBar: BottomNavigationBar(
