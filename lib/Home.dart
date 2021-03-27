@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_bar/CustomSearchDelegate.dart';
 import 'Initial.dart';
 
 class Home extends StatefulWidget {
@@ -8,15 +9,16 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  List<Widget> _pages = [
-    Initial(),
-    Text('Em Alta'),
-    Text('Inscritos'),
-    Text('Biblioteca'),
-  ];
+  String _keyword = '';
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> _pages = [
+      Initial(keyword: _keyword),
+      Text('Em Alta'),
+      Text('Inscritos'),
+      Text('Biblioteca'),
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -36,7 +38,13 @@ class _HomeState extends State<Home> {
           ),
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () { print('search'); }
+            onPressed: () async {
+              String keyword = await showSearch(context: context, delegate: CustomSearchDelegate() );
+              setState(() {
+                _keyword = keyword;
+                _currentIndex = 0;
+              });
+            }
           ),
           IconButton(
             icon: Icon(Icons.account_circle),

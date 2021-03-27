@@ -6,6 +6,7 @@ void main() async {
   await DotEnv.load(fileName: '.env');
   runApp(MaterialApp(
     title: 'Youtube bar',
+    debugShowCheckedModeBanner: false,
     home: Home()
   ));
 }

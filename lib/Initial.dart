@@ -3,20 +3,24 @@ import 'package:youtube_bar/models/Video.dart';
 import 'Api.dart';
 
 class Initial extends StatefulWidget {
+  String keyword;
+
+  Initial({ this.keyword });
+
   @override
   _InitialState createState() => _InitialState();
 }
 
 class _InitialState extends State<Initial> {
-  Future<List<Video>> _listVideos() {
+  Future<List<Video>> _listVideos(String keyword) {
     Api api = Api();
-    return api.search("");
+    return api.search(keyword);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Video>>(
-      future: _listVideos(),
+      future: _listVideos(widget.keyword),
       builder: (context, snapshot) {
         switch(snapshot.connectionState) {
           case ConnectionState.none:
